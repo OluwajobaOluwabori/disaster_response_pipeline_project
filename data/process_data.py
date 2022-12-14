@@ -5,8 +5,8 @@ import numpy as np
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
-    messages = pd.read_csv('messages_filepath')
-    categories = pd.read_csv('categories_filepath')
+    messages = pd.read_csv(messages_filepath)
+    categories = pd.read_csv(categories_filepath)
     df = pd.merge(messages,categories)
     return df
 
@@ -44,9 +44,10 @@ def clean_data(df):
     return df
 
 
-def save_data(df, database_filename):
-    engine = create_engine('sqlite:////database_filename')  
-    pd.to_sql(df,con=engine, index=False,if_exists='replace')
+def save_data(df, database_filepath):
+    ''' save the clean dataset into an sqlite database'''
+    engine = create_engine('sqlite:///'+database_filepath)
+    df.to_sql("master", engine, index=False)
 
 
 def main():
