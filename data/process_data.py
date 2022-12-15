@@ -5,8 +5,10 @@ import numpy as np
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    # load messages and categories dataset
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
+    # merge datasets
     df = pd.merge(messages,categories)
     return df
 
@@ -18,9 +20,7 @@ def clean_data(df):
     # select the first row of the categories dataframe
     row = categories.iloc[0]
 
-    # use this row to extract a list of new column names for categories.
-    # one way is to apply a lambda function that takes everything 
-    # up to the second to last character of each string with slicing
+    # extract a list of new column names for categories.
     category_colnames=[x[0:-2] for x in row]
     
     # rename the columns of `categories`

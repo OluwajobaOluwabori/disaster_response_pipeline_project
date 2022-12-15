@@ -17,6 +17,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import GridSearchCV
 nltk.download(['stopwords','punkt','wordnet','omw-1.4'])
 
+# load data from database
 def load_data(database_filepath):
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql('SELECT * FROM master',con=engine)
@@ -27,6 +28,7 @@ def load_data(database_filepath):
 
     return (X,Y,Y.columns)
 
+# this is tokenization function to process the text data
 def tokenize(text):
     tokens = word_tokenize(text)
     
@@ -38,6 +40,9 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    This creates creates a pipeline and uses GridSearch to find better parameters.
+    '''
     pipeline = Pipeline([ 
     ('tfidf', TfidfVectorizer(tokenizer=tokenize)),
    ('clf', MultiOutputClassifier(RandomForestClassifier(max_depth=3)))
@@ -50,13 +55,17 @@ def build_model():
     return cv
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''This function tests the model and outputs the f1 score,
+     precision, recall and accuracy for each output category of the dataset'''
     y_pred=model.predict(X_test)
     print(classification_report(pd.DataFrame(Y_test), pd.DataFrame(y_pred,columns=category_names),target_names=category_names))
     print((y_pred == Y_test).mean())
 
 
 def save_model(model, model_filepath):
-
+    ''' 
+    This function takes in the model and filepath
+    It export the model as a pickle file'''
     filename = 'model.pkl'
     pickle.dump(model, open(filename, 'wb'))
 
@@ -66,6 +75,7 @@ def main():
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, Y, category_names = load_data(database_filepath)
+        #Split data into train and test sets and train pipeline
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
         with parallel_backend('multiprocessing'): 
             print('Building model...')
