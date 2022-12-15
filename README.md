@@ -1,4 +1,4 @@
-# Disaster Response Pipeline Project
+# Disaster Response Pipeline Projects
 
 ## Description 
 The data set contains real messages that were sent during disaster events. 
