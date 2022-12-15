@@ -2,23 +2,35 @@
 
 ## Description 
 The data set contains real messages that were sent during disaster events. 
-- data
-|- disaster_categories.csv  # data to process 
-|- disaster_messages.csv  # data to process
-|- process_data.py
-|- disaster_response.db   # database to save clean data to
+```
 
-- models
-|- train_classifier.py
-|- model.pkl  # saved model 
+├── data 
+    ├── disaster_categories.csv  # data to process 
+    ├── disaster_messages.csv  # data to process
+    ├── process_data.py
+    ├── disaster_response.db   # database to save clean data to
 
-- app
-| - template
-| |- master.html  # main page of web app
-| |- go.html  # classification result page of web app
-|- run.py  # Flask file that runs app
+├── models
+    ├── train_classifier.py
+    ├── model.pkl  # saved model 
+
+├── app
+    ├── template
+        ├── master.html  # main page of web app
+        ├── go.html  # classification result page of web app
+        ├── run.py  # Flask file that runs app
+
+```
+
+## Installations
 
 
+-   [NumPy](http://www.numpy.org/)
+-   [Pandas](http://pandas.pydata.org/)
+-   [nltk](https://www.nltk.org/)
+-   [scikit-learn](http://scikit-learn.org/stable/)
+-   [sqlalchemy](https://www.sqlalchemy.org/)
+-   [plotly](https://plotly.com/)
 
 ## Project Motivation
 The goal of this project is to create a machine learning pipeline to categorize these events so that messages can be sent to an appropriate disaster relief agency.
@@ -26,24 +38,24 @@ The goal of this project is to create a machine learning pipeline to categorize 
 ## Project Components
 There are three components used to complete this project.
 
-----ETL Pipeline
+- ETL Pipeline
     process_data.py consists of a data cleaning pipeline that:
-    ---Loads the messages and categories datasets
-    ---Merges the two datasets
-    ---Cleans the data
-    ---Stores it in a SQLite database
-----ML Pipeline
+    - Loads the messages and categories datasets
+    - Merges the two datasets
+    - Cleans the data
+    - Stores it in a SQLite database
+- ML Pipeline
    train_classifier.py consists of a machine learning pipeline that:
-   ---Loads data from the SQLite database
-   ---Splits the dataset into training and test sets
-   ---Builds a text processing and machine learning pipeline
-   ---Trains and tunes a model using GridSearchCV
-   ---Outputs results on the test set
-   ---Exports the final model as a pickle file
-----Flask Web App
-   ---upload the database file and pkl file with your model
-   ---data visualizations created using Plotly in the web app
-   ---display results in a Flask web app
+   - Loads data from the SQLite database
+   - Splits the dataset into training and test sets
+   - Builds a text processing and machine learning pipeline
+   - Trains and tunes a model using GridSearchCV
+   - Outputs results on the test set
+   - Exports the final model as a pickle file
+- Flask Web App
+   - Uploads the database file and pkl file with your model
+   - Data visualizations created using Plotly in the web app
+   - Display results in a Flask web app
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
@@ -59,4 +71,4 @@ There are three components used to complete this project.
 
 
 ## References
-Datasets was gotten from [Appen] https://appen.com/datasets/combined-disaster-response-data/ (formally Figure Eight):
+Datasets was gotten from [Appen](https://appen.com/datasets/combined-disaster-response-data/) (formally Figure Eight):
