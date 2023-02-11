@@ -35,9 +35,11 @@ The data set contains real messages that were sent during disaster events.
 ## Project Motivation
 The goal of this project is to create a machine learning pipeline to categorize these events so that messages can be sent to an appropriate disaster relief agency.
 
-### Objective: To develop a machine learning pipeline that can categorize disaster relief messages into relevant categories so that they can be directed to the appropriate disaster relief agency.
+### Objective
+To develop a machine learning pipeline that can categorize disaster relief messages into relevant categories so that they can be directed to the appropriate disaster relief agency.
 
-### Description: The project was designed to create a Natural Language Processing (NLP) tool that could categorize real-life disaster messages and tweets. The data used for the project was pre-labelled and contained messages sent during disaster events. The project was divided into three sections: ETL Pipeline, Machine Learning Pipeline, and Web Development.
+### Description
+The project was designed to create a Natural Language Processing (NLP) tool that could categorize real-life disaster messages and tweets. The data used for the project was pre-labelled and contained messages sent during disaster events. The project was divided into three sections: ETL Pipeline, Machine Learning Pipeline, and Web Development.
 
 The ETL (Extract, Transform, Load) Pipeline involved cleaning and pre-processing the data to get it ready for the machine learning model. The Machine Learning Pipeline used NLP techniques and the scikit-learn library to train a model on the pre-processed data. The final stage involved web development, where a Flask-based web application was developed to showcase the model's categorization results.
 
